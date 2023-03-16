@@ -2,14 +2,52 @@
 
 // 1. Dado un array de números enteros, escribe una función que devuelva el segundo elemento más grande del array.
 
+const array = [5, 7, 8, 1, 3, 9, 4]
+
+const secondMax = function(arr) {
+    let arr1 = arr.slice().sort()
+    arr1.pop()
+    return Math.max(...arr1)
+}
+
+console.log(secondMax(array)); // 8
+
 
 // 2. Dado un array de cadenas, escribe una función que devuelva la cadena más larga del array.
+
+// Devuelve un Array o String ordenado por su longitud.
+Array.prototype.sortByLength = function() {
+    return this.slice().sort( (a, b) => a.length - b.length )
+}
+
+const arrStrings = [ 'fFH99Iw19A7', 'KkHz8Nt6', 'cm', 'BzJdxQMS9', 'DOE' ]
+
+const cadenaMasLarga = function(arr) {
+    return arr.sortByLength().pop()
+}
+
+console.log(cadenaMasLarga(arrStrings));
 
 
 // 3. Dado un array de números enteros y un número entero n, escribe una función que devuelva el número de veces que n aparece en el array.
 
+const nVecesEnArray = function(arr, n) {
+    let veces = 0
+    arr.forEach(element => {
+        if (element === n) veces += 1
+    })
+    return veces
+}
+
+console.log( nVecesEnArray( [1, 5, 8, 8, 9, 4, 1, 6, 8, 9, 8], 8 ) ); // 4
+
 
 // 4. Dado un array de números enteros y un número entero k, escribe una función que devuelva true si hay dos elementos en el array cuya suma sea igual a k o false si no los hay.
+
+const twoInArray = (arr, k) => arr.some( (a, i) => arr.slice(i + 1).includes(k - a) )
+
+console.log(twoInArray([1, 5, 8, 8, 9, 4, 1, 6, 8, 9, 8], 8));
+
 
 
 //Aquí hay una lista de ejercicios con un estilo de prueba técnica para practicar strings y sus métodos en JavaScript:
