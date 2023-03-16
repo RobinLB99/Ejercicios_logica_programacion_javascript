@@ -1,4 +1,4 @@
-// Aquí hay una lista de ejercicios con un estilo de prueba técnica para practicar arrays y sus métodos en JavaScript:
+/* Aquí hay una lista de ejercicios con un estilo de prueba técnica para practicar arrays y sus métodos en JavaScript: --------------------------------------------------------- */
 
 // 1. Dado un array de números enteros, escribe una función que devuelva el segundo elemento más grande del array.
 
@@ -29,13 +29,15 @@ console.log(cadenaMasLarga(arrStrings));
 
 // 3. Dado un array de números enteros y un número entero n, escribe una función que devuelva el número de veces que n aparece en el array.
 
-const nVecesEnArray = function(arr, n) {
-    let veces = 0
-    arr.forEach(element => {
-        if (element === n) veces += 1
-    })
-    return veces
-}
+// const nVecesEnArray = function(arr, n) {
+//     let veces = 0
+//     arr.forEach(element => {
+//         if (element === n) veces += 1
+//     });
+//     return veces
+// }
+
+const nVecesEnArray = (arr, n) => arr.join("").match(new RegExp(n, 'g')).length
 
 console.log( nVecesEnArray( [1, 5, 8, 8, 9, 4, 1, 6, 8, 9, 8], 8 ) ); // 4
 
@@ -44,10 +46,12 @@ console.log( nVecesEnArray( [1, 5, 8, 8, 9, 4, 1, 6, 8, 9, 8], 8 ) ); // 4
 
 const twoInArray = (arr, k) => arr.some( (a, i) => arr.slice(i + 1).includes(k - a) )
 
-console.log(twoInArray([1, 5, 8, 8, 9, 4, 1, 6, 8, 9, 8], 8));
+console.log(twoInArray([1, 5, 8, 8, 9, 4, 1, 6, 8, 9, 8], 8)); // false
 
 
-//Aquí hay una lista de ejercicios con un estilo de prueba técnica para practicar strings y sus métodos en JavaScript:
+
+
+/* Aquí hay una lista de ejercicios con un estilo de prueba técnica para practicar strings y sus métodos en JavaScript: -------------------------------------------*/
 
 
 // 1. Dada una cadena, escribe una función que devuelva la cantidad de vocales en la cadena.
@@ -61,7 +65,7 @@ console.log(twoInArray([1, 5, 8, 8, 9, 4, 1, 6, 8, 9, 8], 8));
 // }
 const nVocales = cadena => (cadena.match(/[aeiouAEIOU]/g) || []).length;
 
-console.log(nVocales('Hola mundo! Esto es una cadena de texto'));
+console.log(nVocales('Hola mundo! Esto es una cadena de texto')); // 15
 
 
 // 2. Dada una cadena, escribe una función que devuelva la cantidad de palabras en la cadena (separadas por espacios).
