@@ -2,15 +2,13 @@
 
 // 1. Dado un array de números enteros, escribe una función que devuelva el segundo elemento más grande del array.
 
-const array = [5, 7, 8, 1, 3, 9, 4]
-
 const secondMax = function(arr) {
     let arr1 = arr.slice().sort()
     arr1.pop()
     return Math.max(...arr1)
 }
 
-console.log(secondMax(array)); // 8
+console.log(secondMax([5, 7, 8, 1, 3, 9, 4])); // 8
 
 
 // 2. Dado un array de cadenas, escribe una función que devuelva la cadena más larga del array.
@@ -49,12 +47,21 @@ const twoInArray = (arr, k) => arr.some( (a, i) => arr.slice(i + 1).includes(k -
 console.log(twoInArray([1, 5, 8, 8, 9, 4, 1, 6, 8, 9, 8], 8));
 
 
-
 //Aquí hay una lista de ejercicios con un estilo de prueba técnica para practicar strings y sus métodos en JavaScript:
 
 
 // 1. Dada una cadena, escribe una función que devuelva la cantidad de vocales en la cadena.
 
+// const nVocales = function(cadena) {
+//     let vocales = 0
+//     cadena.split("").forEach(element => {
+//         if (/[aeiouAEIOU]/.test(element)) vocales += 1
+//     })
+//     return vocales
+// }
+const nVocales = cadena => (cadena.match(/[aeiouAEIOU]/g) || []).length;
+
+console.log(nVocales('Hola mundo! Esto es una cadena de texto'));
 
 
 // 2. Dada una cadena, escribe una función que devuelva la cantidad de palabras en la cadena (separadas por espacios).
