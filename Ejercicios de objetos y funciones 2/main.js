@@ -49,7 +49,7 @@ console.log(mergedObject);
 // Escribe una función que tome un objeto como argumento y devuelva un nuevo objeto con las claves y valores intercambiados (las claves se convierten en valores y viceversa).
 
 
-console.log()
+
 
 // Escribe una función que tome un array de objetos y una clave específica, y devuelva un nuevo array con los valores asociados a esa clave en cada uno de los objetos.
 
