@@ -66,12 +66,29 @@ console.log(invertKeysValues(libro));
 
 // Escribe una función que tome un array de objetos y una clave específica, y devuelva un nuevo array con los valores asociados a esa clave en cada uno de los objetos.
 
+const obtenerValores = (arr, key) => {
+    const array = []
+    arr.forEach(element => array.push(element[key]))
+    return array
+}
 
+console.log(obtenerValores(personas, "nombre"));
 
 
 // Escribe una función que tome un objeto y una clave específica y devuelva true si el valor asociado a esa clave es un número o false si no lo es.
 
+const isNumber = (arr, key) => {
+    if (arr.hasOwnProperty(key)) return typeof arr[key] === "number"
+    return 'No existe esa clave'
+}
+
+console.log(isNumber(persona, 'edad'));
+
+
 // Escribe una función que tome un objeto y una clave específica y devuelva true si el valor asociado a esa clave es un string o false si no lo es.
+
+
+
 
 // Escribe una función que tome un objeto y devuelva un nuevo objeto con las claves ordenadas alfabéticamente.
 
@@ -87,13 +104,42 @@ console.log(invertKeysValues(libro));
 
 // Escribe una función que tome dos objetos como argumentos y devuelva true si tienen las mismas propiedades y valores o false si no.
 
+
+
+
 /* Ejercicios de funciones en JavaScript: ------------------------------------------ */
 
 // Escribe una función que tome tres números como argumentos y devuelva el mayor de los tres.
 
+const numMax = (a, b, c) => Math.max(...[a, b, c])
+
+console.log(numMax(5, 7, 2));
+
+
 // Escribe una función que tome un string como argumento y devuelva true si el string es palíndromo (se lee igual al derecho y al revés) o false si no lo es.
 
+const palindromo = string => {
+    let arr = string.split("").reverse().join("")
+    if (string === arr) return true
+    return false
+}
+
+console.log(palindromo("salas")); // true
+
+
 // Escribe una función que tome dos strings como argumentos y devuelva true si son anagramas (contienen las mismas letras pero en diferente orden) o false si no lo son.
+
+const anagrama = (string1, string2) => {
+    let arr1 = string1.split("").sort()
+    let arr2 = string2.split("").sort()
+
+    if (arr1.length !== arr2.length) return false;
+
+    return arr1.every((element, index) => element === arr2[index])
+}
+
+console.log(anagrama("amor", "roma"));
+
 
 // Escribe una función que tome un número como argumento y devuelva la suma de todos sus divisores (excluyendo al propio número).
 

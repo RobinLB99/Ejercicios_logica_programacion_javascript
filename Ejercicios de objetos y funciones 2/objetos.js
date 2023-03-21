@@ -51,7 +51,7 @@ const libro = {
     }
 };
 
-var reloj = {
+const reloj = {
     marca: "Casio",
     modelo: "G-Shock",
     color: "negro",
@@ -64,3 +64,33 @@ var reloj = {
         }, tiempo * 1000);
     }
 };
+
+const personas = [
+    {
+      nombre: "Juan",
+      edad: 25,
+      ciudad: "Madrid"
+    },
+    {
+      nombre: "María",
+      edad: 32,
+      ciudad: "Barcelona"
+    },
+    {
+      nombre: "Pedro",
+      edad: 40,
+      ciudad: "Valencia"
+    }
+  ];
+
+const persona = {
+    nombre: "María",
+    edad: 32,
+    ciudad: "Barcelona",
+    profesion: "Ingeniera",
+    habilidades: ["Programación", "Diseño", "Liderazgo"],
+    contacto: {
+      email: "maria@example.com",
+      telefono: "+34 123456789"
+    }
+  };
