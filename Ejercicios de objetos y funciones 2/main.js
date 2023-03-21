@@ -66,6 +66,9 @@ console.log(invertKeysValues(libro));
 
 // Escribe una función que tome un array de objetos y una clave específica, y devuelva un nuevo array con los valores asociados a esa clave en cada uno de los objetos.
 
+
+
+
 // Escribe una función que tome un objeto y una clave específica y devuelva true si el valor asociado a esa clave es un número o false si no lo es.
 
 // Escribe una función que tome un objeto y una clave específica y devuelva true si el valor asociado a esa clave es un string o false si no lo es.
