@@ -7,7 +7,8 @@ const newValue = (objeto, clave, valor) => {
     if (objeto.hasOwnProperty(clave)) {
         arr.push(objeto[clave], valor)
         objeto[clave] = arr
-    }
+        console.info('Valor ingresado con exito');
+    } else console.warn('Clave no encontrada!');
 }
 
 console.log(`El valor de la propiedad color del objeto reloj es: ${reloj.color}`);
@@ -20,8 +21,10 @@ console.log(`Los valores actuales de la propiedad color del objeto reloj es: ${r
 // Dado un objeto y una clave específica, escribe una función que actualice el valor asociado a esa clave en el objeto.
 
 const updateValue = (objeto, clave, valor) => {
-    if (objeto.hasOwnProperty(clave)) objeto[clave] = valor
-    else return 'Clave no encontrada'
+    if (objeto.hasOwnProperty(clave)) {
+        objeto[clave] = valor
+        console.info('Valor actualizado con exito!');
+    } else console.warn('Clave no encontrada!');
 }
 
 console.log(`El valor de clave paginas del objeto libro es: ${libro.paginas}`);
@@ -47,6 +50,19 @@ console.log(mergedObject);
 
 
 // Escribe una función que tome un objeto como argumento y devuelva un nuevo objeto con las claves y valores intercambiados (las claves se convierten en valores y viceversa).
+
+const invertKeysValues = object => {
+    let objetInvert = {}
+
+    for (let key in object) {
+        objetInvert[object[key]] = key
+    }
+
+    return objetInvert;
+}
+
+console.log(invertKeysValues(libro));
+
 
 // Escribe una función que tome un array de objetos y una clave específica, y devuelva un nuevo array con los valores asociados a esa clave en cada uno de los objetos.
 
