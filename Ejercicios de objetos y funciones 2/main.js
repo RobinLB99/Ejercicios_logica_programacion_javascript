@@ -143,6 +143,37 @@ console.log(anagrama("amor", "roma"));
 
 // Escribe una función que tome un número como argumento y devuelva la suma de todos sus divisores (excluyendo al propio número).
 
+const addAllDivisible = (num = 0) => {
+    let factores = [];
+    let divisor = 2;
+
+    while (num > 2) {
+        if (num % divisor == 0) {
+            factores.push(divisor);
+            num /= divisor;
+        } else {
+            divisor++;
+        }
+    }
+
+    let divisoresArray = [1];
+
+    for (let i = 0; i < factores.length; i++) {
+        let len = divisoresArray.length;
+        for (let j = 0; j < len; j++) {
+            divisoresArray.push(divisoresArray[j] * factores[i]);
+        }
+    }
+
+    divisoresArray.sort((a, b) => a - b).pop();
+
+    return divisoresArray.reduce((accumulator, currentValue) => accumulator + currentValue)
+}
+
+console.log(addAllDivisible(78));
+
+
+
 // Escribe una función que tome dos números como argumentos y devuelva su máximo común divisor (MCD).
 
 // Escribe una función que tome dos números como argumentos y devuelva su mínimo común múltiplo (mcm).
