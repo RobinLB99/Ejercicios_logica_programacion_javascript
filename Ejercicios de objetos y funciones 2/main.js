@@ -87,10 +87,23 @@ console.log(isNumber(persona, 'edad'));
 
 // Escribe una función que tome un objeto y una clave específica y devuelva true si el valor asociado a esa clave es un string o false si no lo es.
 
+const keyValueIsString = (object, key) => {
+    if (!object.hasOwnProperty(key)) return 'La clave no existe en el objecto'
+    return typeof object[key] === 'string'
+}
 
+console.log(keyValueIsString(persona, 'nombre'));
 
 
 // Escribe una función que tome un objeto y devuelva un nuevo objeto con las claves ordenadas alfabéticamente.
+
+const orderedObj = (obj) => Object.keys(obj).sort().reduce((acc, key) => {
+    acc[key] = obj[key];
+    return acc;
+  }, {});
+
+console.log(orderedObj(persona));
+
 
 // Escribe una función que tome un objeto y devuelva la cantidad de propiedades que tiene.
 
@@ -177,6 +190,17 @@ console.log(addAllDivisible(78));
 
 
 // Escribe una función que tome dos números como argumentos y devuelva su máximo común divisor (MCD).
+
+function mcd(a, b) {
+    if (b == 0) {
+        return a;
+    } else {
+        return mcd(b, a % b);
+    }
+}
+
+console.log(mcd(48, 60))
+
 
 // Escribe una función que tome dos números como argumentos y devuelva su mínimo común múltiplo (mcm).
 
