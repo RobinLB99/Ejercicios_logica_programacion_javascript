@@ -167,7 +167,9 @@ const addAllDivisible = (num = 0) => {
 
     divisoresArray.sort((a, b) => a - b).pop();
 
-    return divisoresArray.reduce((accumulator, currentValue) => accumulator + currentValue)
+    return divisoresArray.reduce( (accumulator, currentValue) =>
+        accumulator + currentValue
+    )
 }
 
 console.log(addAllDivisible(78));
