@@ -42,3 +42,9 @@ const peliculas = [
         sinopsis: 'La historia real de Oskar Schindler, quien salvó a más de mil judíos de los campos de concentración nazis.'
     }
 ];
+
+const promesas = [
+    new Promise((resolve) => setTimeout(resolve, 1000, 'Primero')),
+    new Promise((resolve) => setTimeout(resolve, 2000, 'Segundo')),
+    new Promise((resolve) => setTimeout(resolve, 3000, 'Tersero'))
+]
