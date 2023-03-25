@@ -10,7 +10,10 @@ const getDatos = () => {
 }
 
 getDatos()
-    .then(datos => console.log(datos))
+    .then(datos => {
+        console.info('getDatos() resuelto')
+        console.log(datos)
+    })
 
 
 
@@ -25,7 +28,7 @@ const getDatos2 = () => {
 }
 
 getDatos2()
-    .catch(error => console.log(error))
+    .catch(() => console.error(`getDatos2() rechazado`))
 
 
 
@@ -42,14 +45,52 @@ printMessage()
 
 // Crear una función que use setInterval para imprimir un mensaje cada cierto tiempo.
 
+const printMessageConsole = () => {
+    return setInterval(function() {
+        console.log('Este es un mensaje cada 10 segundos')
+    }, 10000)
+}
+
+let intervalID = printMessageConsole()
+
+setTimeout(function() {
+    clearInterval(intervalID);
+}, 60000);
 
 // Crear una función que use Promise.all para esperar a que varias promesas se resuelvan.
+
+const isResolveAllPromise = (promise1, promise2) => {
+    Promise.all([promise1, promise2])
+        .then(() => console.log("Todas las promesas fueron resueltas"))
+        .catch(() => console.error('Existen promesas no resueltas'))
+}
+
+isResolveAllPromise(getDatos(), getDatos2()) // getDatos2() tiene un reject. La funcion retornara un error en consola.
 
 
 // Crear una función que use Promise.race para esperar a que la primera de varias promesas se resuelva.
 
+const firstPromiseRevolve = arrPromise => {
+    return Promise.race(arrPromise)
+        .then(resultado => console.log(resultado))
+        .catch(error => console.error(error))
+}
+
+firstPromiseRevolve(promesas) // primero
+
 
 // Crear una función que use async/await para esperar a que una promesa se resuelva.
+
+let promiseX = new Promise((resolve, reject) => {
+    setTimeout(() => resolve("¡Hecho!"), 6000)
+  });
+
+async function myAsyncFunction(promise) {
+    let resultado = await promise
+    return console.log(resultado);
+}
+
+myAsyncFunction(promiseX)
 
 
 // Crear una función que use async/await y un bucle for para esperar a que varias promesas se resuelvan en secuencia.
