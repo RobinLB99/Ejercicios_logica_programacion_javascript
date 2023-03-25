@@ -16,8 +16,28 @@ getDatos()
 
 // Crear una función que devuelva una promesa que se rechace después de un tiempo determinado.
 
+const getDatos2 = () => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            reject(peliculas)
+        }, 3000)
+    })
+}
+
+getDatos2()
+    .catch(error => console.log(error))
+
+
 
 // Crear una función que use setTimeout para imprimir un mensaje después de un tiempo determinado.
+
+const printMessage = () => {
+    return setTimeout(() => {
+        console.log('Este es un mensaje por consola!');
+    }, 1500)
+}
+
+printMessage()
 
 
 // Crear una función que use setInterval para imprimir un mensaje cada cierto tiempo.
