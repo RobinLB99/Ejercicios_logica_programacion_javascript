@@ -268,18 +268,23 @@ console.log(addAllDivisible(78)); // 90
 
 // Escribe una función que tome dos números como argumentos y devuelva su máximo común divisor (MCD).
 
-function mcd(a, b) {
+function MCD(a, b) {
     if (b == 0) {
         return a;
     } else {
-        return mcd(b, a % b);
+        return MCD(b, a % b);
     }
 }
 
-console.log(mcd(48, 60)) // 12
+console.log(MCD(48, 60)) // 12
 
 
 // Escribe una función que tome dos números como argumentos y devuelva su mínimo común múltiplo (mcm).
+
+const mcm = (a, b) => (a * b) / MCD(a, b);
+
+console.log(mcm(6, 7)); // 42
+
 
 // Escribe una función que tome un número como argumento y devuelva la cantidad de dígitos del número.
 
