@@ -5,7 +5,7 @@ const coche = {
     color: "rojo",
     kilometraje: 15000,
     encendido: false,
-    arrancar: function() {
+    arrancar: function () {
         if (this.encendido) {
             console.log("El coche ya está encendido.");
         } else {
@@ -13,7 +13,7 @@ const coche = {
             console.log("El coche se ha encendido.");
         }
     },
-    apagar: function() {
+    apagar: function () {
         if (this.encendido) {
             this.encendido = false;
             console.log("El coche se ha apagado.");
@@ -21,7 +21,7 @@ const coche = {
             console.log("El coche ya está apagado.");
         }
     },
-    conducir: function(km) {
+    conducir: function (km) {
         if (this.encendido) {
             this.kilometraje += km;
             console.log("Has conducido " + km + " kilómetros. El coche tiene ahora " + this.kilometraje + " kilómetros.");
@@ -38,7 +38,7 @@ const libro = {
     genero: "fantasía",
     paginas: 96,
     leido: false,
-    leer: function() {
+    leer: function () {
         if (this.leido) {
             console.log("Ya has leído este libro.");
         } else {
@@ -46,7 +46,7 @@ const libro = {
             console.log("Has empezado a leer este libro.");
         }
     },
-    resumen: function() {
+    resumen: function () {
         console.log("Este libro cuenta la historia de un niño que vive en un pequeño planeta con una rosa y viaja por el universo conociendo a diferentes personajes.");
     }
 };
@@ -55,33 +55,47 @@ const reloj = {
     marca: "Casio",
     modelo: "G-Shock",
     color: "negro",
-    hora: function() {
+    hora: function () {
         return new Date().toLocaleTimeString();
     },
-    alarma: function(tiempo) {
-        setTimeout(function() {
+    alarma: function (tiempo) {
+        setTimeout(function () {
             alert("¡Es la hora!");
         }, tiempo * 1000);
     }
 };
 
+const reloj2 = {
+    color: ["negro", 'azul'],
+    marca: "Casio",
+    modelo: "G-Shock",
+    alarma: function (tiempo) {
+        setTimeout(function () {
+            alert("¡Es la hora!");
+        }, tiempo * 1000);
+    },
+    hora: function () {
+        return new Date().toLocaleTimeString();
+    },
+};
+
 const personas = [
     {
-      nombre: "Juan",
-      edad: 25,
-      ciudad: "Madrid"
+        nombre: "Juan",
+        edad: 25,
+        ciudad: "Madrid"
     },
     {
-      nombre: "María",
-      edad: 32,
-      ciudad: "Barcelona"
+        nombre: "María",
+        edad: 32,
+        ciudad: "Barcelona"
     },
     {
-      nombre: "Pedro",
-      edad: 40,
-      ciudad: "Valencia"
+        nombre: "Pedro",
+        edad: 40,
+        ciudad: "Valencia"
     }
-  ];
+];
 
 const persona = {
     nombre: "María",
@@ -90,7 +104,7 @@ const persona = {
     profesion: "Ingeniera",
     habilidades: ["Programación", "Diseño", "Liderazgo"],
     contacto: {
-      email: "maria@example.com",
-      telefono: "+34 123456789"
+        email: "maria@example.com",
+        telefono: "+34 123456789"
     }
-  };
+};

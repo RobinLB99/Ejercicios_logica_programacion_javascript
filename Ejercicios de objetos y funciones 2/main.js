@@ -100,7 +100,7 @@ console.log(keyValueIsString(persona, 'nombre')); // true
 const orderedObj = (obj) => Object.keys(obj).sort().reduce((acc, key) => {
     acc[key] = obj[key];
     return acc;
-  }, {});
+}, {});
 
 console.log(orderedObj(persona));
 
@@ -113,38 +113,90 @@ console.log(numKeysInObject(reloj)); // 5
 
 // Escribe una función que tome un objeto y devuelva un nuevo objeto con las claves en mayúsculas.
 
-// const keysToUpperCase = obj => {
-//     const keysUpper =  Object.keys(obj).map(element => element.toUpperCase())
-//     const keysValues = Object.values(obj)
-
-//     let KeysUpperCase = {}
-
-//     for (let i = 0; i < Object.keys(obj).length; i++) {
-//         KeysUpperCase[keysUpper[i]] = keysValues[i]
-//     }
-
-//     return console.log(KeysUpperCase);
-// }
-
 const upperCaseKeys = obj => {
     let newObj = {};
     for (let key in obj) {
-      newObj[key.toUpperCase()] = obj[key];
+        newObj[key.toUpperCase()] = obj[key];
     }
     return newObj;
-  }
+}
 
 console.log(upperCaseKeys(reloj));
 
 // Escribe una función que tome un objeto y devuelva un nuevo objeto con los valores en mayúsculas (si son strings).
 
+const upperCaseValues = obj => {
+    let newObj = {};
+    for (let key in obj) {
+        (typeof obj[key] === 'string')
+            ? newObj[key] = obj[key].toUpperCase()
+            : newObj[key] = obj[key];
+    }
+    return newObj;
+}
+
+console.log(upperCaseValues(reloj));
+
+
 // Escribe una función que tome un objeto y una clave específica y devuelva true si el valor asociado a esa clave es un array o false si no lo es.
+
+const isArray = (obj, key) => {
+    if (!obj.hasOwnProperty(key)) return "La clave no existe en el objeto"
+    return obj[key] instanceof Array
+}
+
+console.log(isArray(reloj, 'marca')); // false
+
 
 // Escribe una función que tome un objeto y una clave específica y devuelva true si el valor asociado a esa clave es un objeto o false si no lo es.
 
+const isObject = (obj, key) => {
+    if (!obj.hasOwnProperty(key)) return 'La clave no existe en el objeto'
+    if (obj[key] instanceof Array) return false
+    return obj[key] instanceof Object
+}
+
+console.log(isObject(persona, 'contacto')); // true
+
+
 // Escribe una función que tome dos objetos como argumentos y devuelva true si tienen las mismas propiedades y valores o false si no.
 
+function ordenarObjeto(obj) {
+    return Object.keys(obj).sort().reduce((acc, key) => {
+        acc[key] = obj[key];
+        return acc;
+    }, {})
+}
 
+const isEqual = (obj1, obj2) => {
+    const newObj1 = ordenarObjeto(obj1)
+    const newObj2 = ordenarObjeto(obj2)
+
+    return JSON.stringify(newObj1) === JSON.stringify(newObj2);
+}
+
+console.log(isEqual(reloj, reloj2)); // true
+
+// function compararObjetos(obj1, obj2) {
+//     // Obtener las claves de los objetos
+//     const clavesObj1 = Object.keys(obj1);
+//     const clavesObj2 = Object.keys(obj2);
+
+//     // Verificar si el número de claves es el mismo
+//     if (clavesObj1.length !== clavesObj2.length) {
+//         return false;
+//     }
+
+//     // Verificar si todas las claves y valores son iguales
+//     for (const clave of clavesObj1) {
+//         if (obj1[clave] !== obj2[clave]) {
+//             return false;
+//         }
+//     }
+
+//     // Si todas las verificaciones pasaron, devolver verdadero
+//     return true;
+// }
 
 
 /* Ejercicios de funciones en JavaScript: ------------------------------------------ */
@@ -205,7 +257,7 @@ const addAllDivisible = (num = 0) => {
 
     divisoresArray.sort((a, b) => a - b).pop();
 
-    return divisoresArray.reduce( (accumulator, currentValue) =>
+    return divisoresArray.reduce((accumulator, currentValue) =>
         accumulator + currentValue
     )
 }
