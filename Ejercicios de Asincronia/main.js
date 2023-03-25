@@ -1,6 +1,17 @@
 // Aquí hay una lista de 20 ejercicios básicos para practicar asincronía con JavaScript: ----------------------------------------------------------------------
 
 // Crear una función que devuelva una promesa que se resuelva después de un tiempo determinado.
+const getDatos = () => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(peliculas)
+        }, 5000)
+    })
+}
+
+getDatos()
+    .then(datos => console.log(datos))
+
 
 
 // Crear una función que devuelva una promesa que se rechace después de un tiempo determinado.
