@@ -288,26 +288,94 @@ console.log(mcm(6, 7)); // 42
 
 // Escribe una función que tome un número como argumento y devuelva la cantidad de dígitos del número.
 
+const digitos = num => num.toString().length.toString().concat(" digitos")
+
+console.log(digitos(7985));
+
+
 // Escribe una función que tome dos números como argumentos (base and exponente) and devuelve la potencia del primer número elevado al segundo número.
+
+const potencia = (base, exp) => Math.pow(base, exp)
+
+console.log(potencia(4, 2)); // 16
+
 
 // Escribe una función que tome dos números como argumentos y devuelva su producto.
 
+const producto = (num1, num2) => num1 * num2
+
+console.log(producto(5, 5)); // 25
+
+
 // Escribe una función que tome dos números como argumentos y devuelva su cociente.
+
+const cociente = (num1, num2) => num1 / num2
+console.log(cociente(7, 2)); // 3.5
+
 
 // Escribe una función que tome dos números como argumentos y devuelva su resto (módulo).
 
+const modulo = (num1, num2) => num1 % num2
+console.log(modulo(10, 5)); // 0
+
+
 // Escribe una función que tome un número como argumento y devuelva true si el número es par o false si es impar.
+
+const isPar = num => num % 2 === 0
+console.log(isPar(5)); // false
+
 
 // Escribe una función que tome un número como argumento y devuelva true si el número es positivo o false si es negativo.
 
+const isPositive = num => num >= 0
+console.log(isPositive(1)); // true
+
+
 // Escribe una función que tome dos números como argumentos (base and exponente) and devuelve la raíz del primer número elevado al segundo número.
+
+const potenciaDeRaiz = (base, exp) => Math.pow(Math.sqrt(base), exp)
+console.log(potenciaDeRaiz(8, 2)); // 8
+
 
 // Escribe una función que tome dos números como argumentos y devuelva su promedio.
 
+const promedio = (num1, num2) => (num1 + num2) / 2
+console.log(promedio(8, 10)); // 9
+
+
 // Escribe una función que tome tres números como argumentos y devuelva su promedio.
+
+const promedio2 = (num1 = 0, num2 = 0, num3 = 0) => (num1 + num2 + num3) / 3
+console.log(promedio2(8, 10, 8)); // 8.67
+
 
 // Escribe una función que tome un array de números como argumento y devuelva su promedio.
 
+const arrPromedio = arr => {
+    return arr.reduce(
+        (accumulator, currentValue) => accumulator + currentValue
+    ) / arr.length
+}
+
+console.log(arrPromedio([5, 5, 7, 8, 9])); // 6.8
+
+
 // Escribe una función que tome un número como argumento y devuelva la suma de todos sus dígitos.
 
+const suma_de_digitos = num => {
+    return num.toString().split("").map(element =>
+        parseInt(element)).reduce(
+            (accumulator, currentValue) => accumulator + currentValue
+        )
+}
+
+console.log(suma_de_digitos(45875)); // 29
+
+
 // Escribe una función que tome dos números como argumentos (base and exponente) and devuelve el logaritmo del primer número en base al segundo número.
+
+function logaritmo(base, exponente) {
+    return Math.log(base) / Math.log(exponente);
+}
+
+console.log(logaritmo(13, 5)); // 1.59.....
