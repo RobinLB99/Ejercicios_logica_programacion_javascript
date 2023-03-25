@@ -72,7 +72,7 @@ const obtenerValores = (arr, key) => {
     return array
 }
 
-console.log(obtenerValores(personas, "nombre"));
+console.log(obtenerValores(personas, "nombre")); //['Juan', 'María', 'Pedro']
 
 
 // Escribe una función que tome un objeto y una clave específica y devuelva true si el valor asociado a esa clave es un número o false si no lo es.
@@ -92,7 +92,7 @@ const keyValueIsString = (object, key) => {
     return typeof object[key] === 'string'
 }
 
-console.log(keyValueIsString(persona, 'nombre'));
+console.log(keyValueIsString(persona, 'nombre')); // true
 
 
 // Escribe una función que tome un objeto y devuelva un nuevo objeto con las claves ordenadas alfabéticamente.
@@ -106,8 +106,35 @@ console.log(orderedObj(persona));
 
 
 // Escribe una función que tome un objeto y devuelva la cantidad de propiedades que tiene.
+const numKeysInObject = obj => Object.keys(obj).length
+
+console.log(numKeysInObject(reloj)); // 5
+
 
 // Escribe una función que tome un objeto y devuelva un nuevo objeto con las claves en mayúsculas.
+
+// const keysToUpperCase = obj => {
+//     const keysUpper =  Object.keys(obj).map(element => element.toUpperCase())
+//     const keysValues = Object.values(obj)
+
+//     let KeysUpperCase = {}
+
+//     for (let i = 0; i < Object.keys(obj).length; i++) {
+//         KeysUpperCase[keysUpper[i]] = keysValues[i]
+//     }
+
+//     return console.log(KeysUpperCase);
+// }
+
+const upperCaseKeys = obj => {
+    let newObj = {};
+    for (let key in obj) {
+      newObj[key.toUpperCase()] = obj[key];
+    }
+    return newObj;
+  }
+
+console.log(upperCaseKeys(reloj));
 
 // Escribe una función que tome un objeto y devuelva un nuevo objeto con los valores en mayúsculas (si son strings).
 
@@ -123,10 +150,9 @@ console.log(orderedObj(persona));
 /* Ejercicios de funciones en JavaScript: ------------------------------------------ */
 
 // Escribe una función que tome tres números como argumentos y devuelva el mayor de los tres.
-
 const numMax = (a, b, c) => Math.max(...[a, b, c])
 
-console.log(numMax(5, 7, 2));
+console.log(numMax(5, 7, 2)); // 7
 
 
 // Escribe una función que tome un string como argumento y devuelva true si el string es palíndromo (se lee igual al derecho y al revés) o false si no lo es.
@@ -141,7 +167,6 @@ console.log(palindromo("salas")); // true
 
 
 // Escribe una función que tome dos strings como argumentos y devuelva true si son anagramas (contienen las mismas letras pero en diferente orden) o false si no lo son.
-
 const anagrama = (string1, string2) => {
     let arr1 = string1.split("").sort()
     let arr2 = string2.split("").sort()
@@ -151,7 +176,7 @@ const anagrama = (string1, string2) => {
     return arr1.every((element, index) => element === arr2[index])
 }
 
-console.log(anagrama("amor", "roma"));
+console.log(anagrama("amor", "roma")); // true
 
 
 // Escribe una función que tome un número como argumento y devuelva la suma de todos sus divisores (excluyendo al propio número).
@@ -185,7 +210,7 @@ const addAllDivisible = (num = 0) => {
     )
 }
 
-console.log(addAllDivisible(78));
+console.log(addAllDivisible(78)); // 90
 
 
 
@@ -199,7 +224,7 @@ function mcd(a, b) {
     }
 }
 
-console.log(mcd(48, 60))
+console.log(mcd(48, 60)) // 12
 
 
 // Escribe una función que tome dos números como argumentos y devuelva su mínimo común múltiplo (mcm).
