@@ -44,7 +44,7 @@ const peliculas = [
 ];
 
 const promesas = [
-    new Promise((resolve) => setTimeout(resolve, 1000, 'Primero')),
-    new Promise((resolve) => setTimeout(resolve, 2000, 'Segundo')),
-    new Promise((resolve) => setTimeout(resolve, 3000, 'Tersero'))
+    new Promise((resolve, reject) => setTimeout(() => resolve('Promesa 1'), 3000)),
+    new Promise((resolve, reject) => setTimeout(() => reject('Promesa 2'), 7000)),
+    new Promise((resolve, reject) => setTimeout(() => resolve('Promesa 3'), 4000))
 ]
