@@ -220,7 +220,7 @@ const signal = controller.signal;
 
 async function data(url) {
     try {
-        const response = await fetch(url, {signal})
+        const response = await fetch(url, { signal })
         const datos = await response.json()
         console.log(datos);
     } catch (error) {
@@ -303,3 +303,25 @@ fetch(promesas[0])
 
 // Crear un ejemplo de código que muestre cómo crear y usar un objeto Promise.
 
+const miPromesa = new Promise((resolve, reject) => {
+    setTimeout(() => resolve('Esto es un ejemplo de promesa y su uso.'), 7000)
+})
+
+miPromesa
+    .then(data => console.log(data))
+    .catch(error => console.error(error.message))
+
+
+/* -> Tambien se puede usar de la siguiente manera */
+async function myPromise() {
+    try {
+        const response = await miPromesa
+        console.log(response);
+    } catch (error) {
+        console.error(error.message);
+    } finally {
+        console.log('Se termino la ejecucion de la funcion "myPromise()"');
+    }
+}
+
+myPromise()
