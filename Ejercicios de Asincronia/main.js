@@ -277,12 +277,29 @@ fetchData2('https://jsonplaceholder.typicode.com/todos')
 
 // Crear un ejemplo de código que muestre cómo encadenar varias promesas usando .then
 
+fetch('https://jsonplaceholder.typicode.com/todos/3')
+    .then(response => response.json())
+    .then(data => {
+        const arr = []
+        for (const key in data) {
+            arr.push(data[key])
+        }
+        return arr
+    })
+    .then(array => console.log(array))
 
 // Crear un ejemplo de código que muestre cómo manejar errores en una cadena de promesas usando .catch
 
+fetch()
+    .then(response => response.json())
+    .catch(error => console.error(error.message)) // Nunca entrara al .then() y dara error porque el dato que contiene la promesa en fetch() no es un json valido.
 
 // Crear un ejemplo de código que muestre cómo usar el método .finally en una cadena de promesas.
 
+fetch(promesas[0])
+    .then(response => console.log(response))
+    .catch(error => console.error(error.message))
+    .finally(() => console.log('se termino la ejecucion del procesamiento de la promesa'))
 
 // Crear un ejemplo de código que muestre cómo crear y usar un objeto Promise.
 
