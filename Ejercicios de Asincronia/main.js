@@ -215,11 +215,64 @@ error => console.error(error.message) */
 
 // Crear una función que cancele una solicitud en curso usando AbortController.
 
+const controller = new AbortController();
+const signal = controller.signal;
+
+async function data(url) {
+    try {
+        const response = await fetch(url, {signal})
+        const datos = await response.json()
+        console.log(datos);
+    } catch (error) {
+        if (error.name === 'AbortError') {
+            console.error('Request aborted');
+        } else {
+            console.error('Request failed', error);
+        }
+    }
+}
+
+data('https://jsonplaceholder.typicode.com/todos')
+controller.abort();
+
 
 // Crear un ejemplo de código que muestre cómo usar Promise.resolve.
 
+async function fetchData(url) {
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        // Promise.resolve() no permite trabajar un valor como una promesa. Si el paramertro es una promesa, entonces Promise.resolve() devuelve esa promesa.
+        console.log(Promise.resolve(data));
+        return console.log(data)
+    } catch (error) {
+        console.error(error.message);
+    }
+}
+
+fetchData('https://jsonplaceholder.typicode.com/todos/1')
+
+
 
 // Crear un ejemplo de código que muestre cómo usar Promise.reject.
+
+async function fetchData2(url) {
+    try {
+        const response = await fetch(url);
+
+        if (response.ok) {
+            const data = await response.json();
+            return console.log(data)
+        } else {
+            return Promise.reject(`Error al obtener los datos de la API`);
+        }
+
+    } catch (error) {
+        console.error(error.message);
+    }
+}
+
+fetchData2('https://jsonplaceholder.typicode.com/todos')
 
 
 // Crear un ejemplo de código que muestre cómo encadenar varias promesas usando .then
