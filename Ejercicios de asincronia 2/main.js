@@ -103,10 +103,12 @@ ejemplo()
 
 const URLS = ['https://api.spacexdata.com/v3/rockets/falcon1', 'https://api.spacexdata.com/v3/rockets/falcon9', 'https://api.spacexdata.com/v3/rockets/falconheavy'];
 
-async function multipleFetchingAPI (URLs) {
+async function multipleFetchingAPI(URLs) {
     try {
         const responses = await Promise.all(URLs.map(url => fetch(url)))
-        const datosPedidos = await Promise.all(responses.map(response => response.json()))
+        const datosPedidos = await Promise.all(
+            responses.map(response => response.json())
+        )
         console.log('Los datos se colocaron en el arreglo')
         return datosPedidos
     } catch (error) {
@@ -120,8 +122,52 @@ multipleFetchingAPI(URLS)
 
 // 7. Crear una función asincrónica que haga múltiples solicitudes a diferentes APIs y devuelva los resultados en un arreglo.
 
+const arrURLS = ['https://api.spacexdata.com/v3/rockets/falcon1', 'https://jsonplaceholder.typicode.com/comments/5', 'https://jsonplaceholder.typicode.com/posts/2'];
+
+async function multipleFetchingMultipleAPIs(URLs) {
+    try {
+        const responses = await Promise.all(URLs.map(url => fetch(url)))
+        const datosPedidos = await Promise.all(
+            responses.map(response => response.json())
+        )
+        console.log('Los datos se colocaron en el arreglo')
+        return datosPedidos
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
+multipleFetchingMultipleAPIs(arrURLS)
+    .then(datos => console.log(datos))
+
 
 // 8. Crear una promesa que se resuelva si el usuario hace clic en un botón utilizando el evento click.
+
+const parrafo = document.getElementById("texto_i")
+const resolver = document.getElementById('resolver')
+
+// resolver.addEventListener('click', function() {
+//     fetch('https://jsonplaceholder.typicode.com/posts/2')
+//         .then(response => response.json())
+//         .then(dato => {
+//             console.log(dato)
+//             parrafo.innerText = dato["body"]
+//         })
+//         .catch(error => console.error(error.message))
+// })
+
+const promesaBoton = new Promise((resolve, reject) => {
+    resolver.addEventListener('click', () => {
+        resolve('El usuario hizo clic en el botón');
+    });
+});
+
+promesaBoton
+    .then(mensaje => {
+        console.log(mensaje)
+        parrafo.innerText = mensaje
+    })
+    .catch((error) => console.error(error.message));
 
 
 // 9. Crear una promesa que se resuelva si el usuario escribe algo en un campo de entrada utilizando el evento input.
