@@ -264,6 +264,52 @@ getDataFromAPI("https://jsonplaceholder.typicode.com/todos/1")
 
 // 12. Crear una función asincrónica que lea varios archivos desde el sistema de archivos y devuelva el contenido en un arreglo.
 
+async function readFilesText() {
+
+    try {
+        let fileInput = document.getElementById('files-input');
+        let files = fileInput.files;
+
+        const contentFiles = []
+
+        for (let i = 0; i < files.length; i++) {
+            let fileToRead = files[i]
+            let fileReader = new FileReader()
+
+            let content = await new Promise((resolve, reject) => {
+                fileReader.readAsText(fileToRead)
+
+                fileReader.onload = () => {
+                    resolve(fileReader.result)
+                };
+
+                fileReader.onerror = () => {
+                    reject(new Error('Error al leer el archivo'));
+                };
+            });
+
+            contentFiles.push(content)
+        }
+
+        return Promise.resolve(contentFiles)
+
+    } catch (error) {
+        console.error(error.message)
+        throw error
+    }
+}
+
+let fileInput = document.getElementById('files-input');
+const cargarArchivos = document.getElementById('enviar_archivos')
+
+cargarArchivos.addEventListener('click', function () {
+    readFilesText()
+        .then(data => console.log(data))
+        .catch(error => console.error(error));
+})
+
+
+
 
 // 13. Crear una promesa que se resuelva si el usuario permite el acceso a su ubicación utilizando navigator.geolocation.
 
