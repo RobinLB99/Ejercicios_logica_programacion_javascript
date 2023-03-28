@@ -221,6 +221,46 @@ resultJSON()
 
 // 11. Crear una función asincrónica que utilice XMLHttpRequest para llamar a una API y devuelva los resultados en formato JSON.
 
+async function getDataFromAPI(url) {
+    return new Promise((resolve, reject) => {
+        const request = new XMLHttpRequest();
+        request.responseType = "json";
+        request.timeout = 5000;
+        request.open("GET", url);
+
+        request.onload = function () {
+            if (request.status === 200) {
+                if (request.response != null) {
+                    resolve(request.response);
+                } else {
+                    reject(new Error("La solicitud devolvió un cuerpo vacío"));
+                }
+            } else {
+                reject(new Error(`Error de servidor: ${request.status}`));
+            }
+        };
+
+        request.onerror = function () {
+            reject(new Error("Error de red"));
+        };
+
+        request.ontimeout = function () {
+            reject(new Error("Tiempo de espera agotado"));
+        };
+
+        request.send(null); // Argumento null significa que no se envía nada en el mensaje.
+
+        if (request.readyState === 4 && request.status === 0) {
+            reject(new Error("La petición no se inició correctamente"));
+        }
+
+    });
+}
+
+getDataFromAPI("https://jsonplaceholder.typicode.com/todos/1")
+    .then((data) => console.log(data))
+    .catch((error) => console.error(error.message));
+
 
 // 12. Crear una función asincrónica que lea varios archivos desde el sistema de archivos y devuelva el contenido en un arreglo.
 
