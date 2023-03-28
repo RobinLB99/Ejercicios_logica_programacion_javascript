@@ -1,17 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <input type="file" name="texto" id="file-input">
-    <input type="button" value="Cargar" id="enviar">
+    <fieldset>
+        <legend>Asincronia leyendo un archivo desde el sistema de archivos</legend>
+        <input type="file" name="texto" id="file-input">
+        <input type="button" value="Cargar" id="enviar">
+    </fieldset>
     <br><br>
-    <input type="button" value="Resolver promesa" id="resolver">
-    <p id="texto_i"></p>
+    <fieldset>
+        <legend>Resolver promesa por boton</legend>
+        <input type="button" value="Resolver promesa" id="resolver">
+        <p id="texto_i">Aqui va el valor de la promesa</p>
+    </fieldset>
+    <br><br>
+    <fieldset>
+        <legend>Resolver promesa cuando se digita con el teclado en el input</legend>
+        <input type="text" name="texto" id="texto_d">
+        <p id="salida_t">Salida del texto que se escriba en el input</p>
+    </fieldset>
     <script type="module" src="main.js"></script>
 </body>
+
 </html>

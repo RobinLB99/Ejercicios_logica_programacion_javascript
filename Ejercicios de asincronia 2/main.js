@@ -172,8 +172,51 @@ promesaBoton
 
 // 9. Crear una promesa que se resuelva si el usuario escribe algo en un campo de entrada utilizando el evento input.
 
+const input = document.getElementById('texto_d')
+const salida = document.getElementById('salida_t')
+
+input.addEventListener('input', () => {
+    new Promise((resolve, reject) => {
+        resolve(input.value)
+    })
+    .then(mensaje => {
+        salida.innerText = mensaje
+    })
+})
+
+// input.addEventListener('input', () => {
+//     salida.innerText = input.value
+// })
+
+// const inputPromise = new Promise((resolve) => {
+//     const inputElement = document.getElementById('texto_d');
+//     inputElement.addEventListener('input', (event) => {
+//         if (event.target.value) {
+//             resolve(event.target.value);
+//         }
+//     });
+// });
+
+// inputPromise.then((value) => {
+//     console.log(`El usuario escribió: ${value}`);
+// });
+
 
 // 10. Crear una función asincrónica que utilice fetch() para llamar a una API y devuelva los resultados en formato JSON.
+
+async function resultJSON() {
+    try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts/2')
+        const dato = await response.json()
+        return dato
+    } catch (error) {
+        console.error(error.message)
+    }
+}
+
+resultJSON()
+    .then(json => console.log(json))
+
 
 
 // 11. Crear una función asincrónica que utilice XMLHttpRequest para llamar a una API y devuelva los resultados en formato JSON.
