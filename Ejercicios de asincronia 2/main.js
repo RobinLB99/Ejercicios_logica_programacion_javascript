@@ -264,32 +264,26 @@ getDataFromAPI("https://jsonplaceholder.typicode.com/todos/1")
 
 // 12. Crear una función asincrónica que lea varios archivos desde el sistema de archivos y devuelva el contenido en un arreglo.
 
-async function readFilesText() {
-
+async function readFilesText(files) {
     try {
-        let fileInput = document.getElementById('files-input');
-        let files = fileInput.files;
-
         const contentFiles = []
 
-        for (let i = 0; i < files.length; i++) {
-            let fileToRead = files[i]
+        files.forEach(async file => {
             let fileReader = new FileReader()
 
             let content = await new Promise((resolve, reject) => {
-                fileReader.readAsText(fileToRead)
-
                 fileReader.onload = () => {
                     resolve(fileReader.result)
-                };
+                }
 
                 fileReader.onerror = () => {
                     reject(new Error('Error al leer el archivo'));
                 };
-            });
 
+                fileReader.readAsText(file, 'utf-8')
+            });
             contentFiles.push(content)
-        }
+        });
 
         return Promise.resolve(contentFiles)
 
@@ -299,19 +293,33 @@ async function readFilesText() {
     }
 }
 
-let fileInput = document.getElementById('files-input');
+let filesInput = document.getElementById('files-input');
 const cargarArchivos = document.getElementById('enviar_archivos')
 
 cargarArchivos.addEventListener('click', function () {
-    readFilesText()
-        .then(data => console.log(data))
-        .catch(error => console.error(error));
+    if (filesInput.files.length > 0) {
+        let archivos = Array.from(filesInput.files)
+        let tipoIncorrecto = archivos.some(file => file.type !== 'text/plain')
+
+        if (tipoIncorrecto) {
+            if (archivos.length === 1) console.error('El archivo no es del tipo de archivo correcto!')
+            if (archivos.length > 1) console.error('Uno o varios de los archivos no son del tipo de archivo correcto!')
+        } else {
+            readFilesText(archivos)
+                .then(data => console.log(data))
+                .catch(error => console.error(error));
+        }
+
+    } else {
+        console.error('No se ha seleccionado archivos')
+    }
 })
 
 
 
-
 // 13. Crear una promesa que se resuelva si el usuario permite el acceso a su ubicación utilizando navigator.geolocation.
+
+console.log(navigator.geolocation)
 
 
 // 14. Crear una promesa que se resuelva si el usuario permite el acceso a su cámara utilizando navigator.mediaDevices.getUserMedia().
@@ -333,4 +341,3 @@ cargarArchivos.addEventListener('click', function () {
 
 
 // 20. Crear una función asincrónica que utilice IndexedDB para almacenar y recuperar datos en una base de datos local.
-
